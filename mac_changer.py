@@ -1,11 +1,18 @@
 #!/usr/bin/env python
 
-# only subprocess libr used, secure.
+# subprocess and optparse mod used, secure.
 
 import subprocess
+import optparse
 
-interface = input("interface > ")
-new_mac = input("new MAC > ")
+parser = optparse.OptionParser()
+parser.add_option("-i", "--interface", dest="interface", help="Interface to change MAC Address")
+parser.add_option("-m", "--mac", dest="new_mac", help="Interface to change MAC Address")
+
+(options, arguments) = parser.parse_args()
+
+interface = options.interface
+new_mac = options.new_mac
 
 print("[+]Changing MAC Address for " + interface + " to " + new_mac)
 
